@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartAgri AI</title>
+<link rel="stylesheet" href="Style.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+    <div class="logo">
+        <span>🌱</span> SmartAgri AI
+    </div>
+
+    <div class="nav-buttons">
+        <button class="btn outline" onclick="showHome()">Home</button>
+        <button class="btn outline" onclick="showLogin()">Login</button>
+        <button class="btn green" onclick="showRegister()">Register</button>
+    </div>
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="homePage">
+
+<section class="hero">
+<div class="hero-content">
+
+<div>🌾 AI POWERED AGRICULTURE PLATFORM</div>
+
+<h1>
+Smart Farming.<br>
+Brighter Tomorrow.
+</h1>
+
+<p>
+SmartAgri AI helps farmers decide what to grow,
+when to grow it, where to sell it and how to transport
+their produce profitably.
+</p>
+
+<div class="actions">
+<button class="btn green" onclick="showLogin('farmer')">
+👨‍🌾 Farmer Login
+</button>
+
+<button class="btn orange" onclick="showLogin('transporter')">
+🚚 Transporter Login
+</button>
+
+<button class="btn outline" onclick="showRegister()">
+Create Account
+</button>
+</div>
+
+</div>
+</section>
+
+
+<div class="features">
+
+<div class="feature">
+<div class="feature-icon">🧠</div>
+<b>AI Crop Forecast</b>
+<small>Plan what to grow and when.</small>
+</div>
+
+<div class="feature">
+<div class="feature-icon">📈</div>
+<b>Market Intelligence</b>
+<small>Compare market prices.</small>
+</div>
+
+<div class="feature">
+<div class="feature-icon">💰</div>
+<b>Profit Calculator</b>
+<small>Estimate your farm profit.</small>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🚚</div>
+<b>Transport</b>
+<small>Book trucks for produce.</small>
+</div>
+
+</div>
+
+
+<section class="section">
+<div class="container">
+
+<div class="section-title">
+<h2>One platform for the complete farm journey</h2>
+<p class="muted">
+From crop planning to market and transportation.
+</p>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>🌱 Crop Planning</h3>
+<p>
+Select location, month, land and water availability
+to receive an estimated crop recommendation.
+</p>
+<br>
+<button class="btn outline" onclick="showLogin('farmer')">
+Explore
+</button>
+</div>
+
+<div class="card">
+<h3>📊 Market Intelligence</h3>
+<p>
+Compare market prices, distance, transport costs
+and estimated net return.
+</p>
+<br>
+<button class="btn outline" onclick="showLogin('farmer')">
+Explore
+</button>
+</div>
+
+<div class="card">
+<h3>🚛 Logistics</h3>
+<p>
+Farmers can request trucks while transporters
+manage their vehicles and booking requests.
+</p>
+<br>
+<button class="btn outline" onclick="showLogin('transporter')">
+Explore
+</button>
+</div>
+
+</div>
+</div>
+</section>
+
+<footer class="footer">
+SmartAgri AI • MCA Project Prototype
+</footer>
+
+</section>
+
+
+<!-- ================= AUTH ================= -->
+
+<section id="authPage" class="auth hidden">
+
+<div class="auth-box">
+
+<div class="auth-left">
+<h2>🌱 SmartAgri AI</h2>
+<h1>Plan.<br>Sell.<br>Prosper.</h1>
+<p>
+Intelligent crop planning, market information,
+profit estimation and transport management.
+</p>
+</div>
+
+<div class="auth-right">
+
+<h2 id="authTitle">Login</h2>
+
+<p class="muted" id="authText">
+Login to your SmartAgri account.
+</p>
+
+<br>
+
+<div class="field">
+<label>Role</label>
+
+<select id="authRole">
+<option value="farmer">Farmer</option>
+<option value="transporter">Transporter</option>
+</select>
+
+</div>
+
+<br>
+
+<div id="nameBox">
+<div class="field">
+<label>Name</label>
+<input id="authName" placeholder="Enter your name">
+</div>
+<br>
+</div>
+
+
+<div id="phoneBox">
+<div class="field">
+<label>Phone</label>
+<input id="authPhone" placeholder="10 digit phone number">
+</div>
+<br>
+</div>
+
+<div class="field">
+<label>Aadhaar Card Number</label>
+<input id="authPassword" type="text" maxlength="12" inputmode="numeric" placeholder="Enter 12-digit Aadhaar Number">
+</div>
+
+<div id="confirmBox" class="hidden">
+<br>
+<div class="field">
+<label>Confirm Aadhaar Number</label>
+<input id="authConfirm" type="text" maxlength="12" inputmode="numeric" placeholder="Re-enter Aadhaar Number">
+</div>
+</div>
+
+<div class="form-actions">
+
+<button id="authButton"
+class="btn green"
+onclick="submitAuth()">
+Login
+</button>
+
+<button class="btn outline" onclick="showHome()">
+Back
+</button>
+
+</div>
+
+<br>
+
+<p class="muted">
+<span id="switchText">Don't have an account?</span>
+<button class="btn outline" onclick="toggleAuth()" id="switchBtn">
+Register
+</button>
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FARMER APPLICATION ================= -->
+
+<section id="farmerApp" class="hidden">
+
+<div class="app">
+
+<aside class="sidebar">
+
+<h3>👨‍🌾 Farmer Panel</h3>
+
+<button class="side-btn active" onclick="farmerPage('dashboard',this)">
+🏠 Dashboard
+</button>
+
+<button class="side-btn" onclick="farmerPage('forecast',this)">
+🧠 AI Crop Forecast
+</button>
+
+<button class="side-btn" onclick="farmerPage('calendar',this)">
+📅 Crop Calendar
+</button>
+
+<button class="side-btn" onclick="farmerPage('market',this)">
+📈 Market Prices
+</button>
+
+<button class="side-btn" onclick="farmerPage('profit',this)">
+💰 Profit Calculator
+</button>
+
+<button class="side-btn" onclick="farmerPage('risk',this)">
+🌦️ Weather & Risk
+</button>
+
+<button class="side-btn" onclick="farmerPage('transport',this)">
+🚚 Find Transport
+</button>
+
+<button class="side-btn" onclick="farmerPage('bookings',this)">
+📦 My Bookings
+</button>
+
+<button class="side-btn" onclick="logout()">
+↪ Logout
+</button>
+
+</aside>
+
+
+<main class="main">
+
+<!-- DASHBOARD -->
+
+<div id="farmer-dashboard">
+
+<div class="page-title">
+<div>
+<h1>Welcome, <span id="farmerName">Farmer</span> 👨‍🌾</h1>
+<p class="muted">Your smart agriculture dashboard</p>
+</div>
+
+<button class="btn green"
+onclick="farmerPage('forecast')">
+🧠 Start AI Forecast
+</button>
+</div>
+
+<div class="kpis">
+
+<div class="kpi">
+<small>AI Forecasts</small>
+<div class="kpi-number">12</div>
+</div>
+
+<div class="kpi">
+<small>Markets</small>
+<div class="kpi-number">24+</div>
+</div>
+
+<div class="kpi">
+<small>My Bookings</small>
+<div id="bookingCount" class="kpi-number">0</div>
+</div>
+
+<div class="kpi">
+<small>Saved Plans</small>
+<div class="kpi-number">3</div>
+</div>
+
+</div>
+
+<div class="quick">
+
+<div class="card" onclick="farmerPage('forecast')">
+<h3>🧠 AI Crop Forecast</h3>
+<p>Find suitable crops for your planting month.</p>
+</div>
+
+<div class="card" onclick="farmerPage('calendar')">
+<h3>📅 Crop Calendar</h3>
+<p>View month-wise crop planning.</p>
+</div>
+
+<div class="card" onclick="farmerPage('market')">
+<h3>📈 Market Prices</h3>
+<p>Compare different markets.</p>
+</div>
+
+<div class="card" onclick="farmerPage('profit')">
+<h3>💰 Profit Calculator</h3>
+<p>Calculate expected farm profit.</p>
+</div>
+
+<div class="card" onclick="farmerPage('transport')">
+<h3>🚚 Find Transport</h3>
+<p>Book a truck for your produce.</p>
+</div>
+
+<div class="card" onclick="farmerPage('risk')">
+<h3>🌦️ Risk Analysis</h3>
+<p>Check crop risk factors.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FORECAST -->
+
+<div id="farmer-forecast" class="hidden">
+
+<div class="page-title">
+<div>
+<h1>🧠 AI Crop Planning & Profit Forecast</h1>
+<p class="muted">
+Select your farming conditions.
+</p>
+</div>
+</div>
+
+<div class="form-card">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Location</label>
+<select id="forecastLocation">
+<option>Bengaluru, Karnataka</option>
+<option>Mysuru, Karnataka</option>
+<option>Tumakuru, Karnataka</option>
+<option>Mandya, Karnataka</option>
+</select>
+</div>
+
+<div class="field">
+<label>Planting Month</label>
+<select id="forecastMonth">
+<option>January</option>
+<option>February</option>
+<option>March</option>
+<option>April</option>
+<option>May</option>
+<option>June</option>
+<option>July</option>
+<option>August</option>
+<option>September</option>
+<option selected>October</option>
+<option>November</option>
+<option>December</option>
+</select>
+</div>
+
+<div class="field">
+<label>Land Area (Acres)</label>
+<input id="forecastArea" type="number" value="2" min="0.1">
+</div>
+
+<div class="field">
+<label>Nitrogen - N (kg/ha)</label>
+<input id="forecastN" type="number" value="90" min="0" max="140">
+</div>
+
+<div class="field">
+<label>Phosphorus - P (kg/ha)</label>
+<input id="forecastP" type="number" value="42" min="0" max="145">
+</div>
+
+<div class="field">
+<label>Potassium - K (kg/ha)</label>
+<input id="forecastK" type="number" value="43" min="0" max="205">
+</div>
+
+<div class="field">
+<label>Temperature (°C)</label>
+<input id="forecastTemp" type="number" value="21" step="0.1" min="0" max="50">
+</div>
+
+<div class="field">
+<label>Humidity (%)</label>
+<input id="forecastHumidity" type="number" value="82" step="0.1" min="0" max="100">
+</div>
+
+<div class="field">
+<label>Soil pH</label>
+<input id="forecastPh" type="number" value="6.5" step="0.1" min="0" max="14">
+</div>
+
+<div class="field">
+<label>Rainfall (mm)</label>
+<input id="forecastRainfall" type="number" value="200" step="0.1" min="0" max="400">
+</div>
+
+</div>
+
+<div class="alert info" style="margin-top:15px">
+🧠 These 7 values feed the trained Random Forest model (99.5% test accuracy on 2,200 samples, 22 crops). Default values shown are a real high-yield rice sample from the training data — try changing them to see different crop recommendations.
+</div>
+
+<div class="form-actions">
+
+<button class="btn green" onclick="generateForecast()">
+Generate AI Forecast
+</button>
+
+<button class="btn outline" onclick="clearForecast()">
+Reset
+</button>
+
+</div>
+
+</div>
+
+<div id="forecastResult"></div>
+
+</div>
+
+
+<!-- CALENDAR -->
+
+<div id="farmer-calendar" class="hidden">
+
+<div class="page-title">
+<div>
+<h1>📅 Yearly Crop Calendar</h1>
+<p class="muted">
+Indicative crop planning by month.
+</p>
+</div>
+</div>
+
+<div class="calendar" id="calendarGrid"></div>
+
+</div>
+
+
+<!-- MARKET -->
+
+<div id="farmer-market" class="hidden">
+
+<div class="page-title">
+
+<div>
+<h1>📈 Market Price Comparison</h1>
+<p class="muted">
+Compare prices and estimated returns.
+</p>
+</div>
+
+<select id="marketCrop"
+onchange="showMarket()">
+<option>Tomato</option>
+<option>Onion</option>
+<option>Potato</option>
+<option>Carrot</option>
+<option>Cabbage</option>
+<option>Cauliflower</option>
+<option>Brinjal</option>
+<option>Capsicum</option>
+</select>
+
+</div>
+
+<div id="marketMessage" class="alert success"></div>
+
+<div class="table-wrap">
+
+<table>
+
+
+
+
+<thead>
+    <tr>
+        <th>Market</th>
+        <th>Min Price (₹/Quintal)</th>
+        <th>Max Price (₹/Quintal)</th>
+        <th>Modal Price (₹/Quintal)</th>
+        <th>Date</th>
+    </tr>
+</thead>
+<tbody id="marketTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<!-- PROFIT -->
+
+<div id="farmer-profit" class="hidden">
+
+<div class="page-title">
+<div>
+<h1>💰 Profit Calculator</h1>
+<p class="muted">
+Estimate revenue, costs and net profit.
+</p>
+</div>
+</div>
+
+<div class="form-card">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Crop</label>
+<select id="profitCrop">
+<option>Tomato</option>
+<option>Onion</option>
+<option>Potato</option>
+<option>Carrot</option>
+<option>Cabbage</option>
+<option>Cauliflower</option>
+<option>Brinjal</option>
+<option>Capsicum</option>
+</select>
+</div>
+
+<div class="field">
+<label>Land Area (Acres)</label>
+<input id="profitArea" type="number" value="2">
+</div>
+
+<div class="field">
+<label>Expected Price ₹/kg</label>
+<input id="profitPrice" type="number" value="30">
+</div>
+
+<div class="field">
+<label>Yield kg/acre</label>
+<input id="profitYield" type="number" value="2000">
+</div>
+
+<div class="field">
+<label>Seeds ₹</label>
+<input id="seeds" type="number" value="8000">
+</div>
+
+<div class="field">
+<label>Fertilizer ₹</label>
+<input id="fertilizer" type="number" value="12000">
+</div>
+
+<div class="field">
+<label>Labour ₹</label>
+<input id="labour" type="number" value="20000">
+</div>
+
+<div class="field">
+<label>Irrigation ₹</label>
+<input id="irrigation" type="number" value="5000">
+</div>
+
+<div class="field">
+<label>Pesticide ₹</label>
+<input id="pesticide" type="number" value="7000">
+</div>
+
+<div class="field">
+<label>Transport ₹</label>
+<input id="profitTransport" type="number" value="4000">
+</div>
+
+</div>
+
+<div class="form-actions">
+
+<button class="btn green" onclick="calculateProfit()">
+Calculate Profit
+</button>
+
+</div>
+
+</div>
+
+<div id="profitResult"></div>
+
+</div>
+
+
+<!-- RISK -->
+
+<div id="farmer-risk" class="hidden">
+
+<div class="page-title">
+<div>
+<h1>🌦️ Weather & Crop Risk</h1>
+<p class="muted">
+Risk indicators for decision support.
+</p>
+</div>
+
+<select id="riskCrop" onchange="riskAnalysis()">
+<option>Tomato</option>
+<option>Onion</option>
+<option>Potato</option>
+<option>Capsicum</option>
+<option>Cabbage</option>
+<option>Cauliflower</option>
+</select>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>🌦️ Weather</h3>
+<p>Live Weather</p>
+<br>
+<h2 id="temp">Loading...</h2>
+<br>
+<p id="humidity">Loading...</p>
+</div>
+
+<div class="card">
+<h3>📈 Price Risk</h3>
+<div id="priceRisk"></div>
+</div>
+
+<div class="card">
+<h3>📦 Demand Risk</h3>
+<div id="demandRisk"></div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TRANSPORT -->
+
+<div id="farmer-transport" class="hidden">
+
+<div class="page-title">
+<div>
+<h1>🚚 Find Transport</h1>
+<p class="muted">Available trucks.</p>
+</div>
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Truck Number</th>
+<th>Type</th>
+<th>Capacity</th>
+<th>Rate/km</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="truckTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<!-- BOOKINGS -->
+
+<div id="farmer-bookings" class="hidden">
+
+<div class="page-title">
+
+<div>
+<h1>📦 My Bookings</h1>
+<p class="muted">
+Track your transport requests.
+</p>
+</div>
+
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Crop</th>
+<th>Quantity</th>
+<th>Truck</th>
+<th>Route</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="bookingTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</main>
+</div>
+
+</section>
+
+
+<!-- ================= TRANSPORTER APP ================= -->
+
+<section id="transporterApp" class="hidden">
+
+<div class="app">
+
+<aside class="sidebar">
+
+<h3>🚚 Transporter Panel</h3>
+
+<button class="side-btn active"
+onclick="transPage('dashboard',this)">
+🏠 Dashboard
+</button>
+
+<button class="side-btn"
+onclick="transPage('trucks',this)">
+🚛 My Trucks
+</button>
+
+<button class="side-btn"
+onclick="transPage('capacity',this)">
+📦 Manage Capacity
+</button>
+
+<button class="side-btn"
+onclick="transPage('charges',this)">
+₹ Set Charges
+</button>
+
+<button class="side-btn"
+onclick="transPage('requests',this)">
+📨 Booking Requests
+</button>
+
+<button class="side-btn"
+onclick="logout()">
+↪ Logout
+</button>
+
+</aside>
+
+<main class="main">
+
+<!-- TRANSPORTER DASHBOARD -->
+
+<div id="trans-dashboard">
+
+<div class="page-title">
+<div>
+<h1>Transporter Dashboard 🚚</h1>
+<p class="muted">
+Manage your trucks and farmer requests.
+</p>
+</div>
+
+<button class="btn green" onclick="addTruck()">
++ Add Truck
+</button>
+
+</div>
+
+<div class="kpis">
+
+<div class="kpi">
+<small>Total Trucks</small>
+<div class="kpi-number" id="truckCount">3</div>
+</div>
+
+<div class="kpi">
+<small>Pending Requests</small>
+<div class="kpi-number" id="pendingCount">0</div>
+</div>
+
+<div class="kpi">
+<small>Active Trips</small>
+<div class="kpi-number">2</div>
+</div>
+
+<div class="kpi">
+<small>Total Capacity</small>
+<div class="kpi-number">6 Ton</div>
+</div>
+
+</div>
+
+<div class="card">
+<h2>Recent Booking Requests</h2>
+<br>
+<div id="transRequests"></div>
+</div>
+
+</div>
+
+
+<!-- TRUCKS -->
+
+<div id="trans-trucks" class="hidden">
+
+<div class="page-title">
+
+<div>
+<h1>🚛 My Trucks</h1>
+<p class="muted">
+Manage your registered vehicles.
+</p>
+</div>
+
+<button class="btn green" onclick="addTruck()">
++ Add Your Truck
+</button>
+
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Truck Number</th>
+<th>Driver</th>
+<th>Type</th>
+<th>Max Capacity</th>
+<th>Current Load</th>
+<th>Available Space</th>
+<th>Charge</th>
+</tr>
+</thead>
+
+<tbody id="myTruckTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<!-- CAPACITY -->
+
+<div id="trans-capacity" class="hidden">
+
+<div class="page-title">
+<div>
+<h1>📦 Manage Capacity</h1>
+<p class="muted">
+Update current truck load.
+</p>
+</div>
+</div>
+
+<div class="form-card">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Truck Number</label>
+<select id="capacityTruck">
+<option>KA-01-AB-1234</option>
+<option>KA-01-CD-5678</option>
+<option>KA-02-EF-9012</option>
+</select>
+</div>
+
+<div class="field">
+<label>Maximum Capacity (Ton)</label>
+<input id="maxCapacity" type="number" value="2">
+</div>
+
+<div class="field">
+<label>Current Load (Ton)</label>
+<input id="currentLoad" type="number" value="0"
+oninput="calculateSpace()">
+</div>
+
+<div class="field">
+<label>Available Space (Ton)</label>
+<input id="availableSpace" readonly value="2">
+</div>
+
+<div class="field">
+<label>Product Type</label>
+<select>
+<option>Vegetables</option>
+<option>Fruits</option>
+<option>Grains</option>
+<option>Other</option>
+</select>
+</div>
+
+</div>
+
+<br>
+
+<button class="btn green"
+onclick="saveCapacity()">
+Save Capacity
+</button>
+
+</div>
+
+</div>
+
+
+<!-- CHARGES -->
+
+<div id="trans-charges" class="hidden">
+
+<div class="page-title">
+<div>
+<h1>₹ Set Transport Charges</h1>
+<p class="muted">
+Set your transport pricing.
+</p>
+</div>
+</div>
+
+<div class="form-card">
+
+<div class="form-grid">
+
+<div class="field">
+<label>Truck Number</label>
+<select>
+<option>KA-01-AB-1234</option>
+<option>KA-01-CD-5678</option>
+</select>
+</div>
+
+<div class="field">
+<label>Pickup Location</label>
+<input placeholder="Farm location">
+</div>
+
+<div class="field">
+<label>Destination Market</label>
+<input placeholder="KR Market">
+</div>
+
+<div class="field">
+<label>Transport Charge</label>
+<input id="chargeAmount" type="number"
+placeholder="₹ amount">
+</div>
+
+<div class="field">
+<label>Charge Type</label>
+<select>
+<option>Per Trip</option>
+<option>Per Ton</option>
+<option>Per KM</option>
+</select>
+</div>
+
+</div>
+
+<br>
+
+<button class="btn green" onclick="saveCharge()">
+Save Charges
+</button>
+
+</div>
+
+</div>
+
+
+<!-- REQUESTS -->
+
+<div id="trans-requests" class="hidden">
+
+<div class="page-title">
+<div>
+<h1>📨 Booking Requests</h1>
+<p class="muted">
+Accept or reject farmer requests.
+</p>
+</div>
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Farmer</th>
+<th>Crop</th>
+<th>Quantity</th>
+<th>Truck</th>
+<th>Route</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="requestTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+</section>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
